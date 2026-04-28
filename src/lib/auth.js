@@ -25,7 +25,9 @@ export function generateToken(user) {
 
 export function verifyToken(token) {
   try {
-    return jwt.verify(token, JWT_SECRET);
+    var ans = jwt.verify(token, JWT_SECRET);
+    console.log("answer is " , ans)
+    return ans;
   } catch (error) {
     return null;
   }
