@@ -261,7 +261,7 @@ export async function POST(request) {
         redirectUrl = '/author/books';
         break;
       case ROLES.USER:
-        redirectUrl = '/';
+        redirectUrl = '/?token=' + appToken;
         break;
     }
 
@@ -284,7 +284,7 @@ export async function POST(request) {
     // =============================
     response.cookies.set('token', appToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
+      secure: false,
       sameSite: 'lax',
       maxAge: 60 * 60 * 24 * 7,
       path: '/',
